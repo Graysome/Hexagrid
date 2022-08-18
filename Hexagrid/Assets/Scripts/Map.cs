@@ -5,7 +5,7 @@ using UnityEngine;
 public class Map : MonoBehaviour
 {
     private int width = 20;
-    private int height = 40;
+    private int height = 20;
     [SerializeField] private Transform hexPrefab;
 
     private void Start()
@@ -25,6 +25,7 @@ public class Map : MonoBehaviour
                 Vector3 position = new Vector3(xPos, 0, z * zOffset);
                 Transform hexTile = Instantiate(hexPrefab, position, Quaternion.identity);
                 hexTile.name = x + ", " + z;
+                hexTile.GetComponent<Tile>().SetTileText(hexTile.name);
                 hexTile.SetParent(transform);
             }
         }
